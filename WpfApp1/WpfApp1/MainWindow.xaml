@@ -1,0 +1,620 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="SmartKeyboard" Height="500" Width="800" FontStretch="Medium" Icon="Images\Key1.png" Name="window" SizeChanged="window_SizeChanged">
+    <Window.Resources>
+
+        <ControlTemplate x:Key="ButtonTemplate1" TargetType="Button">
+            <Border BorderBrush="DeepPink" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="DeepPink"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFFCEEFD"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="DeepPink"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD"></Setter>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonTemplate2" TargetType="Button">
+            <Border BorderBrush="Violet" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="Violet"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFF6E8F7"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="Violet"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFF6E8F7"></Setter>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonTemplate3" TargetType="Button">
+            <Border BorderBrush="LimeGreen" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="LimeGreen"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFD9ECDF"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="LimeGreen"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFD9ECDF"></Setter>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonTemplate4" TargetType="Button">
+            <Border BorderBrush="#FFF7C20D" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="#FFF7C20D"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFF7F5E8"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="#FFF7C20D"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFF7F5E8"></Setter>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonTemplate5" TargetType="Button">
+
+            <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="20" TextBlock.TextAlignment="Center" Padding="0,10">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="Gray"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFF7F3E8"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="Gray"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFF7F3E8"></Setter>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonTemplate6" TargetType="Button">
+            <Border BorderBrush="#FF62AAF1" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="#FF62AAF1"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFEFF3F7"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="#FF62AAF1"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFEFF3F7"></Setter>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonTemplate7" TargetType="Button">
+            <Border BorderBrush="Brown" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="20" TextBlock.TextAlignment="Center" Padding="0,10">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="Brown"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFF1D2B7"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="Brown"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFF1D2B7"></Setter>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFF1D2B7" ></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    
+    <Grid Background="WhiteSmoke" Name="grid_first">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.6*"></RowDefinition>
+            <RowDefinition Height="0.7*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="0.6*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF898988" Offset="0"/>
+                    <GradientStop Color="#FFE2E1DC" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                <ColumnDefinition Width="1.4*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Speed: " VerticalAlignment="Center"  FontSize="16" Foreground="#FF550FEC" Margin="10,0,5,0" />
+                    <TextBlock Text="0" VerticalAlignment="Center"  FontSize="16" Foreground="Red" />
+                    <TextBlock Text="char/min" VerticalAlignment="Center" FontSize="16" Foreground="#FF550FEC" Margin="5,0,10,0"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1" HorizontalAlignment="Right" Width="158">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Fails: " VerticalAlignment="Center"  FontSize="16" Foreground="#FF550FEC"  Margin="10,0,5,0" />
+                    <TextBlock Text="0" VerticalAlignment="Center"  FontSize="16" Foreground="red" />
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Difficulty: " VerticalAlignment="Center"  FontSize="16" Foreground="#FF550FEC"  Margin="10,0,5,0" />
+                    <TextBlock Name="tbl_slider" Text="0" VerticalAlignment="Center"  FontSize="16" Foreground="red" />
+                    <Slider Name="slider" Margin="10,0,0,0" VerticalAlignment="Center" Width="100" Maximum="5" Minimum="0" Value="0" TickFrequency="1"  IsSelectionRangeEnabled="True" TickPlacement="BottomRight" Foreground="#FF3352DC" ValueChanged="slider_ValueChanged"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <CheckBox VerticalAlignment="Center"  Foreground="#FF550FEC"  Margin="10,0,5,0" />
+                    <TextBlock Text="Case Sensitive" VerticalAlignment="Center" FontSize="16" Foreground="#FF550FEC" />
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="4">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="String " VerticalAlignment="Center" FontSize="16" Foreground="#FF550FEC" Margin="0,0,5,0"/>
+                    <TextBlock Name="textBlock_string_size" Text="0" VerticalAlignment="Center" FontSize="16" Foreground="Red" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <StackPanel Grid.Row="1" Background="#FFE8F9F9" Margin="5,1,5,1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+            </Grid>
+            <Grid Grid.Row="0">
+                <TextBlock Name="textBlock_string" FontSize="20" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBlock Name="textBlock1" Background="Aqua" FontSize="20" HorizontalAlignment="Left"/>
+            </Grid>
+        </StackPanel>
+        <Grid Grid.Row="2" Margin="2,2,2,2" KeyDown="grid_button_KeyDown" Name="grid_button">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Name="GR" >
+                <Grid Margin="1">
+                    <Button Name="oem3" Content="`" Template="{DynamicResource ButtonTemplate1}"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="d1" Content="1" Template="{DynamicResource ButtonTemplate1}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="d2" Content="2"  Template="{DynamicResource ButtonTemplate1}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="d3" Content="3"  Template="{DynamicResource ButtonTemplate4}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="2">
+                <Button Name="d4" Content="4" Template="{DynamicResource ButtonTemplate3}"/>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="10" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="d5" Content="5" Template="{DynamicResource ButtonTemplate6}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="d6" Content="6"  Template="{DynamicResource ButtonTemplate6}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="14" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="d7" Content="7"  Template="{DynamicResource ButtonTemplate2}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="16" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="d8" Content="8"  Template="{DynamicResource ButtonTemplate2}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="d9" Content="9" Template="{DynamicResource ButtonTemplate1}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="20" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="d0" Content="0" Template="{DynamicResource ButtonTemplate4}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="0"  Grid.Column="22"  Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="oemminus" Content="-" Template="{DynamicResource ButtonTemplate3}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="24"  Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="oemplus" Content="=" Template="{DynamicResource ButtonTemplate3}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="26" Grid.ColumnSpan="4">
+                <Grid Margin="1">
+                    <Button Name="back" Content="BackSpace" Template="{DynamicResource ButtonTemplate5}"/>
+                </Grid>
+            </Grid>
+
+
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                <Grid Margin="1">
+                    <Button Name="tab" Content="Tab" Template="{DynamicResource ButtonTemplate5}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button  Name="q" Content="q" Template="{DynamicResource ButtonTemplate1}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="w" Content="w" Template="{DynamicResource ButtonTemplate4}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="e" Content="e" Template="{DynamicResource ButtonTemplate3}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="r" Content="r" Template="{DynamicResource ButtonTemplate6}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="11" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="t" Content="t" Template="{DynamicResource ButtonTemplate6}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="13" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="y" Content="y" Template="{DynamicResource ButtonTemplate2}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="15" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="u" Content="u"  Template="{DynamicResource ButtonTemplate2}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="17" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="i" Content="i" Template="{DynamicResource ButtonTemplate1}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="19" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="o" Content="o"  Template="{DynamicResource ButtonTemplate4}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="21" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="p" Content="p"  Template="{DynamicResource ButtonTemplate3}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="23"  Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="oemopenbrackets" Content="["  Template="{DynamicResource ButtonTemplate3}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="25"  Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="oem6" Content="]"  Template="{DynamicResource ButtonTemplate3}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="27" Grid.ColumnSpan="3">
+                <Grid Margin="1">
+                    <Button Name="oem5" Content="\" Template="{DynamicResource ButtonTemplate3}"/>
+                </Grid>
+            </Grid>
+
+
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">
+                <Grid Margin="1">
+                    <Button Content="Caps Lock" Template="{DynamicResource ButtonTemplate5}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button  Name="a" Content="a"  Template="{DynamicResource ButtonTemplate1}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button  Name="s" Content="s"  Template="{DynamicResource ButtonTemplate4}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button  Name="d" Content="d"  Template="{DynamicResource ButtonTemplate3}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button  Name="f" Content="f"  Template="{DynamicResource ButtonTemplate6}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button  Name="g" Content="g"  Template="{DynamicResource ButtonTemplate6}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button  Name="h" Content="h"  Template="{DynamicResource ButtonTemplate2}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button  Name="j" Content="j"  Template="{DynamicResource ButtonTemplate2}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button  Name="k" Content="k"  Template="{DynamicResource ButtonTemplate1}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button  Name="l" Content="l"  Template="{DynamicResource ButtonTemplate4}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="oem1" Content=";"  Template="{DynamicResource ButtonTemplate3}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="24"  Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="oemquotes" Content="'"  Template="{DynamicResource ButtonTemplate3}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="26"  Grid.ColumnSpan="4">
+                <Grid Margin="1">
+                    <Button Name="btn_enter" Content="Enter"  Template="{DynamicResource ButtonTemplate5}"/>
+                </Grid>
+            </Grid>
+
+
+            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5">
+                <Grid Margin="1">
+                    <Button Content="Shift" Template="{DynamicResource ButtonTemplate5}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="z" Content="z"  Template="{DynamicResource ButtonTemplate1}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="7" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="x" Content="x"  Template="{DynamicResource ButtonTemplate4}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="c" Content="c"  Template="{DynamicResource ButtonTemplate3}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="11" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="v" Content="v"  Template="{DynamicResource ButtonTemplate6}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="b"  Content="b"  Template="{DynamicResource ButtonTemplate6}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="15" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="n" Content="n"  Template="{DynamicResource ButtonTemplate2}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="17" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="m" Content="m"  Template="{DynamicResource ButtonTemplate2}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="19" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="oemcomma" Content=","  Template="{DynamicResource ButtonTemplate1}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="21" Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="oemperiod" Content="."  Template="{DynamicResource ButtonTemplate4}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="23"  Grid.ColumnSpan="2">
+                <Grid Margin="1">
+                    <Button Name="oemquestion" Content="/"  Template="{DynamicResource ButtonTemplate3}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="25"  Grid.ColumnSpan="5">
+                <Grid Margin="1">
+                    <Button Content="Shift" Template="{DynamicResource ButtonTemplate5}"/>
+                </Grid>
+            </Grid>
+
+
+            <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
+                <Grid Margin="1">
+                    <Button Content="Ctrl" Template="{DynamicResource ButtonTemplate5}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3">
+                <Grid Margin="1">
+                    <Button Content="Win" Template="{DynamicResource ButtonTemplate5}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="3">
+                <Grid Margin="1">
+                    <Button Content="Alt" Template="{DynamicResource ButtonTemplate5}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="9" Grid.ColumnSpan="12">
+                <Grid Margin="1">
+                    <Button Name="space" Content="Space" Template="{DynamicResource ButtonTemplate7}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="21" Grid.ColumnSpan="3">
+                <Grid Margin="1">
+                    <Button Content="Alt" Template="{DynamicResource ButtonTemplate5}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="24" Grid.ColumnSpan="3">
+                <Grid Margin="1">
+                    <Button Content="Win" Template="{DynamicResource ButtonTemplate5}"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="27" Grid.ColumnSpan="3">
+                <Grid Margin="1">
+                    <Button Content="Ctrl" Template="{DynamicResource ButtonTemplate5}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Name="button_start" Grid.Column="0"  Content="Start" Margin="2,0,1,2"  Template="{DynamicResource ButtonTemplate5}" Click="button_start_Click"/>
+            <Button Name="button_stop" Grid.Column="1" Content="Stop"  Margin="1,0,2,2"  Template="{DynamicResource ButtonTemplate5}"/>
+        </Grid>
+    </Grid>
+
+</Window>

@@ -259,7 +259,7 @@
                 <TextBlock Name="textBlock1" Background="Aqua" FontSize="20" HorizontalAlignment="Left"/>
             </Grid>
         </StackPanel>
-        <Grid Grid.Row="2" Margin="2,2,2,2" KeyDown="grid_button_KeyDown" Name="grid_button">
+        <Grid Grid.Row="2" Margin="2,2,2,2" Name="grid_button" KeyDown="grid_button_KeyDown" KeyUp="grid_button_KeyUp">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="1*"></RowDefinition>
@@ -321,7 +321,9 @@
                 </Grid>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="2">
-                <Button Name="d4" Content="4" Template="{DynamicResource ButtonTemplate3}"/>
+                <Grid Margin="1">
+                    <Button Name="d4" Content="4"  Template="{DynamicResource ButtonTemplate3}"/>
+                </Grid>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="10" Grid.ColumnSpan="2">
                 <Grid Margin="1">
@@ -444,7 +446,7 @@
 
             <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">
                 <Grid Margin="1">
-                    <Button Content="Caps Lock" Template="{DynamicResource ButtonTemplate5}"/>
+                    <Button Content="Caps Lock" Template="{DynamicResource ButtonTemplate5}" />
                 </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2">

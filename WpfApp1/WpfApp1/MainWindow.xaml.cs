@@ -22,12 +22,12 @@ namespace WpfApp1
     {
         public List<Button> buttons;
         Trigger tr = new Trigger();
-
+        List<Button> allButtons=null;
         public MainWindow()
         {
             InitializeComponent();
             Loaded += MainWindow_Loadded;
-            
+            allButtons = GetVisualChilds<Button>(this.Content as DependencyObject);
         }
 
         public static List<T> GetVisualChilds<T>(DependencyObject parent) where T : DependencyObject
@@ -50,10 +50,10 @@ namespace WpfApp1
             button_stop.IsEnabled = false;
 
         }
-
+       
         private void grid_button_KeyDown(object sender, KeyEventArgs e)
         {
-           List<Button> allButtons = GetVisualChilds<Button>(this.Content as DependencyObject);
+          
             //MessageBox.Show(e.Key.ToString());
             foreach (var item in allButtons)
             {
@@ -64,12 +64,24 @@ namespace WpfApp1
 
                     item.FocusVisualStyle = null;
                     item.Focus();
-                  
+                    break;
                 }
             }
 
         }
+        private void grid_button_KeyUp(object sender, KeyEventArgs e)
+        {
+            foreach (var item in allButtons)
+            {
 
+                if (item.Name.ToString() == e.Key.ToString().ToLower())
+                {
+
+                    GR.Focus();
+
+                }
+            }
+        }
         private void button_start_Click(object sender, RoutedEventArgs e)
         {
             
@@ -89,5 +101,7 @@ namespace WpfApp1
             textBlock_string_size.Text =Convert.ToInt16( ((window.Width - 26) / 10.6)).ToString();
 
         }
+
+       
     }
 }

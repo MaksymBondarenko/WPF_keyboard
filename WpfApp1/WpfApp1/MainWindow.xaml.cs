@@ -21,7 +21,7 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         public List<Button> buttons;
-        Trigger tr = new Trigger();
+    
         List<Button> allButtons=null;
         public MainWindow()
         {
@@ -57,17 +57,29 @@ namespace WpfApp1
             //MessageBox.Show(e.Key.ToString());
             foreach (var item in allButtons)
             {
-               
+                //if (e.Key.ToString().ToLower() == leftshift.Name)
+                //{
+                //    foreach (var item1 in allButtons)
+                //    {
+                //       item1.Content.ToString().ToUpper();
+                //       GR.UpdateDefaultStyle();
+                //    }
+ 
+                //}
+
                 if (item.Name.ToString() == e.Key.ToString().ToLower())
                 {
-                    textBlock1.Text += item.Content.ToString();
 
+                    textBlock1.Text += item.Content.ToString();
                     item.FocusVisualStyle = null;
-                    item.Focus();
-                    break;
+                    item.Tag = "#FFFCEEFD";
+                    Resources["CF1"] = new SolidColorBrush(Colors.DeepPink);
+                    
+                    //item.Focus();
+                    //break;
                 }
             }
-
+           
         }
         private void grid_button_KeyUp(object sender, KeyEventArgs e)
         {
@@ -76,9 +88,13 @@ namespace WpfApp1
 
                 if (item.Name.ToString() == e.Key.ToString().ToLower())
                 {
+                    Resources["CF1"] = new SolidColorBrush(Colors.Black);
+                    ////MessageBox.Show(item.BorderBrush.ToString());
+                    //if (item.BorderBrush.ToString() == "#FF707070")
+                    //{
 
-                    GR.Focus();
-
+                    //    //item.Resources["ButtonTemplate1"]
+                    //}
                 }
             }
         }
@@ -87,7 +103,7 @@ namespace WpfApp1
             
             grid_button.IsEnabled = true;
             button_stop.IsEnabled = true;
-            btn_enter.Focus();
+            
 
         }
 

@@ -8,8 +8,8 @@
         Title="SmartKeyboard" Height="500" Width="800" FontStretch="Medium" Icon="Images\Key1.png" Name="window" SizeChanged="window_SizeChanged">
     <Window.Resources>
 
-        <ControlTemplate x:Key="ButtonTemplate1" TargetType="Button">
-            <Border BorderBrush="DeepPink" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+        <!--<ControlTemplate x:Key="ButtonTemplate1" TargetType="Button">
+            <Border BorderBrush="{TemplateBinding Tag}" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStopCollection>
@@ -27,11 +27,50 @@
                 <Trigger Property="IsPressed" Value="True">
                     <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD"></Setter>
                 </Trigger>
-                <Trigger Property="IsFocused" Value="True">
+                -->
+        <!--<Trigger Property="IsFocused" Value="True">
                     <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
+                </Trigger>-->
+        <!--
+            </ControlTemplate.Triggers>
+        </ControlTemplate>-->
+
+        <LinearGradientBrush x:Key="CF1" StartPoint="0,0" EndPoint="1,0">
+            <GradientStopCollection>
+                    <GradientStop Offset="0" Color="DeepPink"></GradientStop>
+                    <GradientStop Offset="1" Color="#FFFCEEFD"></GradientStop>
+                </GradientStopCollection>
+            </LinearGradientBrush>
+
+            <ControlTemplate x:Key="ButtonTemplate1" TargetType="Button">
+            <Border CornerRadius="8" BorderBrush="DeepPink" BorderThickness="2" Name="border">
+                <!--<Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="DeepPink"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFFCEEFD"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>-->
+                <Grid>
+                    <TextBlock HorizontalAlignment="Center" Padding="{TemplateBinding Padding}" FontSize="30">
+                        <ContentPresenter></ContentPresenter>
+                    </TextBlock>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="DeepPink"></Setter>
                 </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD"></Setter>
+                </Trigger>
+                <!--<Trigger Property="IsFocused" Value="True">
+                    <Setter TargetName="Button" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
+                </Trigger>-->
             </ControlTemplate.Triggers>
         </ControlTemplate>
+
 
         <ControlTemplate x:Key="ButtonTemplate2" TargetType="Button">
             <Border BorderBrush="Violet" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
@@ -185,7 +224,13 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </Window.Resources>
-    
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black" Offset="0"/>
+            <GradientStop Color="#FFFCEEFD" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
     <Grid Background="WhiteSmoke" Name="grid_first">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.6*"></RowDefinition>
@@ -206,7 +251,7 @@
                 <ColumnDefinition Width="1.4*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                
+
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <StackPanel Orientation="Horizontal">
@@ -301,7 +346,7 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Name="GR" >
                 <Grid Margin="1">
-                    <Button Name="oem3" Content="`" Template="{DynamicResource ButtonTemplate1}"/>
+                    <Button Tag="DeepPink" Name="oem3" Content="`" Background="{DynamicResource CF1}" Template="{DynamicResource ButtonTemplate1}"/>
                 </Grid>
             </Grid>
 
@@ -513,7 +558,7 @@
 
             <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5">
                 <Grid Margin="1">
-                    <Button Content="Shift" Template="{DynamicResource ButtonTemplate5}"/>
+                    <Button Name="leftshift" Content="Shift" Template="{DynamicResource ButtonTemplate5}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2">

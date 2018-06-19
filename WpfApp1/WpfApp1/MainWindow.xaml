@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="SmartKeyboard" Height="500" Width="800" FontStretch="Medium" Icon="Images\Key1.png" Name="window" SizeChanged="window_SizeChanged">
+        Title="SmartKeyboard" Height="500" Width="900" FontStretch="Medium" Icon="Images\Key1.png" Name="window" SizeChanged="window_SizeChanged">
     <Window.Resources>
 
-        <!--<ControlTemplate x:Key="ButtonTemplate1" TargetType="Button">
-            <Border BorderBrush="{TemplateBinding Tag}" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+        <ControlTemplate x:Key="ButtonTemplate1" TargetType="Button">
+            <Border BorderBrush="DeepPink" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStopCollection>
@@ -27,31 +27,21 @@
                 <Trigger Property="IsPressed" Value="True">
                     <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD"></Setter>
                 </Trigger>
-                -->
-        <!--<Trigger Property="IsFocused" Value="True">
-                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
-                </Trigger>-->
-        <!--
+
             </ControlTemplate.Triggers>
-        </ControlTemplate>-->
+        </ControlTemplate>
 
-        <LinearGradientBrush x:Key="CF1" StartPoint="0,0" EndPoint="1,0">
-            <GradientStopCollection>
-                    <GradientStop Offset="0" Color="DeepPink"></GradientStop>
-                    <GradientStop Offset="1" Color="#FFFCEEFD"></GradientStop>
-                </GradientStopCollection>
-            </LinearGradientBrush>
 
-            <ControlTemplate x:Key="ButtonTemplate1" TargetType="Button">
-            <Border CornerRadius="8" BorderBrush="DeepPink" BorderThickness="2" Name="border">
-                <!--<Border.Background>
+        <ControlTemplate x:Key="ButtonTemplate1NonBordered" TargetType="Button">
+            <Border  CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+                <Border.Background>
                     <LinearGradientBrush>
                         <GradientStopCollection>
                             <GradientStop Offset="0" Color="DeepPink"></GradientStop>
                             <GradientStop Offset="1" Color="#FFFCEEFD"></GradientStop>
                         </GradientStopCollection>
                     </LinearGradientBrush>
-                </Border.Background>-->
+                </Border.Background>
                 <Grid>
                     <TextBlock HorizontalAlignment="Center" Padding="{TemplateBinding Padding}" FontSize="30">
                         <ContentPresenter></ContentPresenter>
@@ -65,15 +55,13 @@
                 <Trigger Property="IsPressed" Value="True">
                     <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD"></Setter>
                 </Trigger>
-                <!--<Trigger Property="IsFocused" Value="True">
-                    <Setter TargetName="Button" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
-                </Trigger>-->
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
 
-        <ControlTemplate x:Key="ButtonTemplate2" TargetType="Button">
-            <Border BorderBrush="Violet" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+
+        <ControlTemplate x:Key="ButtonTemplate2NonBordered" TargetType="Button">
+            <Border  CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStopCollection>
@@ -91,9 +79,30 @@
                 <Trigger Property="IsPressed" Value="True">
                     <Setter TargetName="border" Property="BorderBrush" Value="#FFF6E8F7"></Setter>
                 </Trigger>
-                <Trigger Property="IsFocused" Value="True">
-                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
+
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonTemplate2" TargetType="Button">
+            <Border BorderBrush="Violet" Tag="Violet" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="Violet"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFF6E8F7"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="Violet"></Setter>
                 </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFF6E8F7"></Setter>
+                </Trigger>
+
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
@@ -116,18 +125,40 @@
                 <Trigger Property="IsPressed" Value="True">
                     <Setter TargetName="border" Property="BorderBrush" Value="#FFD9ECDF"></Setter>
                 </Trigger>
-                <Trigger Property="IsFocused" Value="True">
-                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
-                </Trigger>
+
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
-        <ControlTemplate x:Key="ButtonTemplate4" TargetType="Button">
-            <Border BorderBrush="#FFF7C20D" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+        <ControlTemplate x:Key="ButtonTemplate3NonBordered" TargetType="Button">
+            <Border BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStopCollection>
-                            <GradientStop Offset="0" Color="#FFF7C20D"></GradientStop>
+                            <GradientStop Offset="0" Color="LimeGreen"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFD9ECDF"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="LimeGreen"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFD9ECDF"></Setter>
+                </Trigger>
+
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+
+        <ControlTemplate x:Key="ButtonTemplate4NonBordered" TargetType="Button">
+            <Border BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="Yellow"></GradientStop>
                             <GradientStop Offset="1" Color="#FFF7F5E8"></GradientStop>
                         </GradientStopCollection>
                     </LinearGradientBrush>
@@ -136,19 +167,62 @@
             </Border>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter TargetName="border" Property="Background" Value="#FFF7C20D"></Setter>
+                    <Setter TargetName="border" Property="Background" Value="Yellow"></Setter>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter TargetName="border" Property="BorderBrush" Value="#FFF7F5E8"></Setter>
                 </Trigger>
-                <Trigger Property="IsFocused" Value="True">
-                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
+
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonTemplate4" TargetType="Button">
+            <Border BorderBrush="Yellow" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="Yellow"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFF7F5E8"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="Yellow"></Setter>
                 </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFF7F5E8"></Setter>
+                </Trigger>
+
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonTemplate5NonBordered" TargetType="Button">
+            <Border  BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="20" TextBlock.TextAlignment="Center" Padding="0,10">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="Gray"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFF7F3E8"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="Gray"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFF7F3E8"></Setter>
+                </Trigger>
+
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
         <ControlTemplate x:Key="ButtonTemplate5" TargetType="Button">
-
             <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="20" TextBlock.TextAlignment="Center" Padding="0,10">
                 <Border.Background>
                     <LinearGradientBrush>
@@ -160,7 +234,6 @@
                 </Border.Background>
                 <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
             </Border>
-
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter TargetName="border" Property="Background" Value="Gray"></Setter>
@@ -168,18 +241,16 @@
                 <Trigger Property="IsPressed" Value="True">
                     <Setter TargetName="border" Property="BorderBrush" Value="#FFF7F3E8"></Setter>
                 </Trigger>
-                <Trigger Property="IsFocused" Value="True">
-                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
-                </Trigger>
+
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
-        <ControlTemplate x:Key="ButtonTemplate6" TargetType="Button">
-            <Border BorderBrush="#FF62AAF1" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+        <ControlTemplate x:Key="ButtonTemplate6NonBordered" TargetType="Button">
+            <Border BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStopCollection>
-                            <GradientStop Offset="0" Color="#FF62AAF1"></GradientStop>
+                            <GradientStop Offset="0" Color="BlueViolet"></GradientStop>
                             <GradientStop Offset="1" Color="#FFEFF3F7"></GradientStop>
                         </GradientStopCollection>
                     </LinearGradientBrush>
@@ -188,14 +259,58 @@
             </Border>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter TargetName="border" Property="Background" Value="#FF62AAF1"></Setter>
+                    <Setter TargetName="border" Property="Background" Value="BlueViolet"></Setter>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter TargetName="border" Property="BorderBrush" Value="#FFEFF3F7"></Setter>
                 </Trigger>
-                <Trigger Property="IsFocused" Value="True">
-                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFCEEFD" ></Setter>
+
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonTemplate6" TargetType="Button">
+            <Border BorderBrush="BlueViolet" BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="30" TextBlock.TextAlignment="Center">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="BlueViolet"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFEFF3F7"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="BlueViolet"></Setter>
                 </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFEFF3F7"></Setter>
+                </Trigger>
+
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonTemplate7NonBordered" TargetType="Button">
+            <Border BorderThickness="2" CornerRadius="8" Name="border"  TextBlock.Foreground="Black" TextBlock.FontSize="20" TextBlock.TextAlignment="Center" Padding="0,10">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="Brown"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFF1D2B7"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="border" Property="Background" Value="Brown"></Setter>
+                </Trigger>
+                <!--<Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="border" Property="BorderBrush" Value="#FFF1D2B7"></Setter>
+                </Trigger>-->
+
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
@@ -215,12 +330,10 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter TargetName="border" Property="Background" Value="Brown"></Setter>
                 </Trigger>
-                <Trigger Property="IsPressed" Value="True">
+                <!--<Trigger Property="IsPressed" Value="True">
                     <Setter TargetName="border" Property="BorderBrush" Value="#FFF1D2B7"></Setter>
-                </Trigger>
-                <Trigger Property="IsFocused" Value="True">
-                    <Setter TargetName="border" Property="BorderBrush" Value="#FFF1D2B7" ></Setter>
-                </Trigger>
+                </Trigger>-->
+
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </Window.Resources>
@@ -256,7 +369,7 @@
             <Grid Grid.Column="0">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Speed: " VerticalAlignment="Center"  FontSize="16" Foreground="#FF550FEC" Margin="10,0,5,0" />
-                    <TextBlock Text="0" VerticalAlignment="Center"  FontSize="16" Foreground="Red" />
+                    <TextBlock Name="textBlock_speed" Text="0" VerticalAlignment="Center"  FontSize="16" Foreground="Red" />
                     <TextBlock Text="char/min" VerticalAlignment="Center" FontSize="16" Foreground="#FF550FEC" Margin="5,0,10,0"/>
                 </StackPanel>
             </Grid>
@@ -264,7 +377,7 @@
             <Grid Grid.Column="1" HorizontalAlignment="Right" Width="158">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="Fails: " VerticalAlignment="Center"  FontSize="16" Foreground="#FF550FEC"  Margin="10,0,5,0" />
-                    <TextBlock Text="0" VerticalAlignment="Center"  FontSize="16" Foreground="red" />
+                    <TextBlock Name="textBlock_fails" Text="0" VerticalAlignment="Center"  FontSize="16" Foreground="red" />
                 </StackPanel>
             </Grid>
 
@@ -278,7 +391,7 @@
 
             <Grid Grid.Column="3">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <CheckBox VerticalAlignment="Center"  Foreground="#FF550FEC"  Margin="10,0,5,0" />
+                    <CheckBox Name="checkBox_Upper" VerticalAlignment="Center"  Foreground="#FF550FEC"  Margin="10,0,5,0" />
                     <TextBlock Text="Case Sensitive" VerticalAlignment="Center" FontSize="16" Foreground="#FF550FEC" />
                 </StackPanel>
             </Grid>
@@ -298,10 +411,16 @@
                 </Grid.RowDefinitions>
             </Grid>
             <Grid Grid.Row="0">
-                <TextBlock Name="textBlock_string" FontSize="20" />
+                <TextBlock Name="textBlock_string" FontSize="20" HorizontalAlignment="Left"
+                            Background="{Binding ElementName=textBlock_write, Path=Background, Mode=TwoWay, UpdateSourceTrigger=Default}"   
+               ></TextBlock>
             </Grid>
             <Grid Grid.Row="1">
-                <TextBlock Name="textBlock1" Background="Aqua" FontSize="20" HorizontalAlignment="Left"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="textBlock_write" FontSize="20" HorizontalAlignment="Left" TextInput="textBlock_write_TextInput"/>
+
             </Grid>
         </StackPanel>
         <Grid Grid.Row="2" Margin="2,2,2,2" Name="grid_button" KeyDown="grid_button_KeyDown" KeyUp="grid_button_KeyUp">
@@ -346,73 +465,73 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Name="GR" >
                 <Grid Margin="1">
-                    <Button Tag="DeepPink" Name="oem3" Content="`" Background="{DynamicResource CF1}" Template="{DynamicResource ButtonTemplate1}"/>
+                    <Button Name="oem3" Content="`" Tag="DeepPink" Template="{DynamicResource ButtonTemplate1}"/>
                 </Grid>
             </Grid>
 
             <Grid Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="d1" Content="1" Template="{DynamicResource ButtonTemplate1}"/>
+                    <Button Name="d1" Content="1" Tag="DeepPink" Template="{DynamicResource ButtonTemplate1}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="d2" Content="2"  Template="{DynamicResource ButtonTemplate1}"/>
+                    <Button Name="d2" Content="2" Tag="DeepPink" Template="{DynamicResource ButtonTemplate1}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="d3" Content="3"  Template="{DynamicResource ButtonTemplate4}"/>
+                    <Button Name="d3" Content="3" Tag="Yellow" Template="{DynamicResource ButtonTemplate4}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="d4" Content="4"  Template="{DynamicResource ButtonTemplate3}"/>
+                    <Button Name="d4" Content="4" Tag="LimeGreen" Template="{DynamicResource ButtonTemplate3}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="10" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="d5" Content="5" Template="{DynamicResource ButtonTemplate6}"/>
+                    <Button Name="d5" Content="5" Tag="BlueViolet" Template="{DynamicResource ButtonTemplate6}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="d6" Content="6"  Template="{DynamicResource ButtonTemplate6}"/>
+                    <Button Name="d6" Content="6" Tag="BlueViolet" Template="{DynamicResource ButtonTemplate6}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="14" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="d7" Content="7"  Template="{DynamicResource ButtonTemplate2}"/>
+                    <Button Name="d7" Content="7"  Tag="Violet" Template="{DynamicResource ButtonTemplate2}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="16" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="d8" Content="8"  Template="{DynamicResource ButtonTemplate2}"/>
+                    <Button Name="d8" Content="8" Tag="Violet" Template="{DynamicResource ButtonTemplate2}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="d9" Content="9" Template="{DynamicResource ButtonTemplate1}"/>
+                    <Button Name="d9" Content="9" Tag="DeepPink" Template="{DynamicResource ButtonTemplate1}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="20" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="d0" Content="0" Template="{DynamicResource ButtonTemplate4}"/>
+                    <Button Name="d0" Content="0" Tag="Yellow" Template="{DynamicResource ButtonTemplate4}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="0"  Grid.Column="22"  Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="oemminus" Content="-" Template="{DynamicResource ButtonTemplate3}"/>
+                    <Button Name="oemminus" Content="-" Tag="LimeGreen" Template="{DynamicResource ButtonTemplate3}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="24"  Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="oemplus" Content="=" Template="{DynamicResource ButtonTemplate3}"/>
+                    <Button Name="oemplus" Content="=" Tag="LimeGreen" Template="{DynamicResource ButtonTemplate3}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="26" Grid.ColumnSpan="4">
                 <Grid Margin="1">
-                    <Button Name="back" Content="BackSpace" Template="{DynamicResource ButtonTemplate5}"/>
+                    <Button Name="back" Content="BackSpace" Tag="Grey" Template="{DynamicResource ButtonTemplate5}"/>
                 </Grid>
             </Grid>
 
@@ -424,233 +543,233 @@
             </Grid>
             <Grid Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button  Name="q" Content="q" Template="{DynamicResource ButtonTemplate1}"/>
+                    <Button  Name="q" Content="q" Tag="DeepPink" Template="{DynamicResource ButtonTemplate1}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="w" Content="w" Template="{DynamicResource ButtonTemplate4}"/>
+                    <Button Name="w" Content="w" Tag="Yellow" Template="{DynamicResource ButtonTemplate4}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="e" Content="e" Template="{DynamicResource ButtonTemplate3}"/>
+                    <Button Name="e" Content="e" Tag="LimeGreen" Template="{DynamicResource ButtonTemplate3}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="r" Content="r" Template="{DynamicResource ButtonTemplate6}"/>
+                    <Button Name="r" Content="r" Tag="BlueViolet" Template="{DynamicResource ButtonTemplate6}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="11" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="t" Content="t" Template="{DynamicResource ButtonTemplate6}"/>
+                    <Button Name="t" Content="t" Tag="BlueViolet" Template="{DynamicResource ButtonTemplate6}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="13" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="y" Content="y" Template="{DynamicResource ButtonTemplate2}"/>
+                    <Button Name="y" Content="y" Tag="Violet" Template="{DynamicResource ButtonTemplate2}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="15" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="u" Content="u"  Template="{DynamicResource ButtonTemplate2}"/>
+                    <Button Name="u" Content="u" Tag="Violet" Template="{DynamicResource ButtonTemplate2}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="17" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="i" Content="i" Template="{DynamicResource ButtonTemplate1}"/>
+                    <Button Name="i" Content="i" Tag="DeepPink" Template="{DynamicResource ButtonTemplate1}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="19" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="o" Content="o"  Template="{DynamicResource ButtonTemplate4}"/>
+                    <Button Name="o" Content="o" Tag="Yellow" Template="{DynamicResource ButtonTemplate4}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="21" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="p" Content="p"  Template="{DynamicResource ButtonTemplate3}"/>
+                    <Button Name="p" Content="p" Tag="LimeGreen" Template="{DynamicResource ButtonTemplate3}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="23"  Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="oemopenbrackets" Content="["  Template="{DynamicResource ButtonTemplate3}"/>
+                    <Button Name="oemopenbrackets" Content="[" Tag="LimeGreen" Template="{DynamicResource ButtonTemplate3}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="25"  Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="oem6" Content="]"  Template="{DynamicResource ButtonTemplate3}"/>
+                    <Button Name="oem6" Content="]" Tag="LimeGreen" Template="{DynamicResource ButtonTemplate3}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="27" Grid.ColumnSpan="3">
                 <Grid Margin="1">
-                    <Button Name="oem5" Content="\" Template="{DynamicResource ButtonTemplate3}"/>
+                    <Button Name="oem5" Content="\" Tag="LimeGreen" Template="{DynamicResource ButtonTemplate3}"/>
                 </Grid>
             </Grid>
 
 
             <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">
                 <Grid Margin="1">
-                    <Button Content="Caps Lock" Template="{DynamicResource ButtonTemplate5}" />
+                    <Button Content="Caps Lock"  Tag="Grey" Template="{DynamicResource ButtonTemplate5}" />
                 </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button  Name="a" Content="a"  Template="{DynamicResource ButtonTemplate1}"/>
+                    <Button  Name="a" Content="a" Tag="DeepPink" Template="{DynamicResource ButtonTemplate1}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button  Name="s" Content="s"  Template="{DynamicResource ButtonTemplate4}"/>
+                    <Button  Name="s" Content="s" Tag="Yellow" Template="{DynamicResource ButtonTemplate4}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button  Name="d" Content="d"  Template="{DynamicResource ButtonTemplate3}"/>
+                    <Button  Name="d" Content="d" Tag="LimeGreen" Template="{DynamicResource ButtonTemplate3}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button  Name="f" Content="f"  Template="{DynamicResource ButtonTemplate6}"/>
+                    <Button  Name="f" Content="f" Tag="BlueViolet" Template="{DynamicResource ButtonTemplate6}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button  Name="g" Content="g"  Template="{DynamicResource ButtonTemplate6}"/>
+                    <Button  Name="g" Content="g" Tag="BlueViolet" Template="{DynamicResource ButtonTemplate6}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button  Name="h" Content="h"  Template="{DynamicResource ButtonTemplate2}"/>
+                    <Button  Name="h" Content="h" Tag="Violet" Template="{DynamicResource ButtonTemplate2}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button  Name="j" Content="j"  Template="{DynamicResource ButtonTemplate2}"/>
+                    <Button  Name="j" Content="j" Tag="Violet" Template="{DynamicResource ButtonTemplate2}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button  Name="k" Content="k"  Template="{DynamicResource ButtonTemplate1}"/>
+                    <Button  Name="k" Content="k" Tag="DeepPink" Template="{DynamicResource ButtonTemplate1}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button  Name="l" Content="l"  Template="{DynamicResource ButtonTemplate4}"/>
+                    <Button  Name="l" Content="l" Tag="Yellow" Template="{DynamicResource ButtonTemplate4}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="oem1" Content=";"  Template="{DynamicResource ButtonTemplate3}"/>
+                    <Button Name="oem1" Content=";" Tag="LimeGreen" Template="{DynamicResource ButtonTemplate3}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="24"  Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="oemquotes" Content="'"  Template="{DynamicResource ButtonTemplate3}"/>
+                    <Button Name="oemquotes" Content="'" Tag="LimeGreen" Template="{DynamicResource ButtonTemplate3}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="26"  Grid.ColumnSpan="4">
                 <Grid Margin="1">
-                    <Button Name="btn_enter" Content="Enter"  Template="{DynamicResource ButtonTemplate5}"/>
+                    <Button Name="btn_enter" Content="Enter"  Tag="Grey" Template="{DynamicResource ButtonTemplate5}"/>
                 </Grid>
             </Grid>
 
 
             <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5">
                 <Grid Margin="1">
-                    <Button Name="leftshift" Content="Shift" Template="{DynamicResource ButtonTemplate5}"/>
+                    <Button Name="leftshift" Content="Shift"  Tag="Grey" Template="{DynamicResource ButtonTemplate5}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="z" Content="z"  Template="{DynamicResource ButtonTemplate1}"/>
+                    <Button Name="z" Content="z" Tag="DeepPink" Template="{DynamicResource ButtonTemplate1}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="7" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="x" Content="x"  Template="{DynamicResource ButtonTemplate4}"/>
+                    <Button Name="x" Content="x" Tag="Yellow" Template="{DynamicResource ButtonTemplate4}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="c" Content="c"  Template="{DynamicResource ButtonTemplate3}"/>
+                    <Button Name="c" Content="c" Tag="LimeGreen" Template="{DynamicResource ButtonTemplate3}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="11" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="v" Content="v"  Template="{DynamicResource ButtonTemplate6}"/>
+                    <Button Name="v" Content="v" Tag="BlueViolet" Template="{DynamicResource ButtonTemplate6}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="b"  Content="b"  Template="{DynamicResource ButtonTemplate6}"/>
+                    <Button Name="b"  Content="b" Tag="BlueViolet" Template="{DynamicResource ButtonTemplate6}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="15" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="n" Content="n"  Template="{DynamicResource ButtonTemplate2}"/>
+                    <Button Name="n" Content="n" Tag="Violet" Template="{DynamicResource ButtonTemplate2}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="17" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="m" Content="m"  Template="{DynamicResource ButtonTemplate2}"/>
+                    <Button Name="m" Content="m" Tag="Violet" Template="{DynamicResource ButtonTemplate2}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="19" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="oemcomma" Content=","  Template="{DynamicResource ButtonTemplate1}"/>
+                    <Button Name="oemcomma" Content="," Tag="DeepPink" Template="{DynamicResource ButtonTemplate1}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="21" Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="oemperiod" Content="."  Template="{DynamicResource ButtonTemplate4}"/>
+                    <Button Name="oemperiod" Content="." Tag="Yellow" Template="{DynamicResource ButtonTemplate4}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="23"  Grid.ColumnSpan="2">
                 <Grid Margin="1">
-                    <Button Name="oemquestion" Content="/"  Template="{DynamicResource ButtonTemplate3}"/>
+                    <Button Name="oemquestion" Content="/" Tag="LimeGreen" Template="{DynamicResource ButtonTemplate3}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="25"  Grid.ColumnSpan="5">
                 <Grid Margin="1">
-                    <Button Content="Shift" Template="{DynamicResource ButtonTemplate5}"/>
+                    <Button Content="Shift"  Tag="Grey" Template="{DynamicResource ButtonTemplate5}"/>
                 </Grid>
             </Grid>
 
 
             <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
                 <Grid Margin="1">
-                    <Button Content="Ctrl" Template="{DynamicResource ButtonTemplate5}"/>
+                    <Button Content="Ctrl"  Tag="Grey" Template="{DynamicResource ButtonTemplate5}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3">
                 <Grid Margin="1">
-                    <Button Content="Win" Template="{DynamicResource ButtonTemplate5}"/>
+                    <Button Content="Win"  Tag="Grey" Template="{DynamicResource ButtonTemplate5}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="3">
                 <Grid Margin="1">
-                    <Button Content="Alt" Template="{DynamicResource ButtonTemplate5}"/>
+                    <Button Content="Alt"  Tag="Grey" Template="{DynamicResource ButtonTemplate5}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="5" Grid.Column="9" Grid.ColumnSpan="12">
                 <Grid Margin="1">
-                    <Button Name="space" Content="Space" Template="{DynamicResource ButtonTemplate7}"/>
+                    <Button Name="button_Focus" Content="Space" Tag="Brown" Template="{DynamicResource ButtonTemplate7}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="5" Grid.Column="21" Grid.ColumnSpan="3">
                 <Grid Margin="1">
-                    <Button Content="Alt" Template="{DynamicResource ButtonTemplate5}"/>
+                    <Button Content="Alt"  Tag="Grey" Template="{DynamicResource ButtonTemplate5}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="5" Grid.Column="24" Grid.ColumnSpan="3">
                 <Grid Margin="1">
-                    <Button Content="Win" Template="{DynamicResource ButtonTemplate5}"/>
+                    <Button   Content="Win"  Tag="Grey" Template="{DynamicResource ButtonTemplate5}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="5" Grid.Column="27" Grid.ColumnSpan="3">
                 <Grid Margin="1">
-                    <Button Content="Ctrl" Template="{DynamicResource ButtonTemplate5}"/>
+                    <Button Content="Ctrl"  Tag="Grey" Template="{DynamicResource ButtonTemplate5}"/>
                 </Grid>
             </Grid>
         </Grid>
@@ -660,7 +779,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Button Name="button_start" Grid.Column="0"  Content="Start" Margin="2,0,1,2"  Template="{DynamicResource ButtonTemplate5}" Click="button_start_Click"/>
-            <Button Name="button_stop" Grid.Column="1" Content="Stop"  Margin="1,0,2,2"  Template="{DynamicResource ButtonTemplate5}"/>
+            <Button Name="button_stop" Grid.Column="1" Content="Stop"  Margin="1,0,2,2"  Template="{DynamicResource ButtonTemplate5}" Click="button_stop_Click"/>
         </Grid>
     </Grid>
 

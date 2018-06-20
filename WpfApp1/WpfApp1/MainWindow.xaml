@@ -417,7 +417,7 @@
             </Grid>
             <Grid Grid.Row="1">
                
-                <TextBlock Name="textBlock_write" FontSize="20" HorizontalAlignment="Left" />
+                <TextBlock Name="textBlock_write" FontSize="20" HorizontalAlignment="Left" Background="Aqua"/>
 
             </Grid>
         </StackPanel>

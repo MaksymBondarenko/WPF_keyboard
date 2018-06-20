@@ -20,6 +20,9 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        DateTime DT = new DateTime();
+        
+
         int count = 0, fails = 0;
         bool flag = false;
         Random rnd = new Random();
@@ -29,7 +32,7 @@ namespace WpfApp1
             InitializeComponent();
             Loaded += MainWindow_Loadded;
             allButtons = GetVisualChilds<Button>(this.Content as DependencyObject);
-           
+            
         }
 
         public static List<T> GetVisualChilds<T>(DependencyObject parent) where T : DependencyObject

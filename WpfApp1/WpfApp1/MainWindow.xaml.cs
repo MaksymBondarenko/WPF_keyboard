@@ -20,6 +20,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        int count = 0, fails = 0;
         bool flag = false;
         Random rnd = new Random();
        public List<Button> allButtons=null;
@@ -94,59 +95,72 @@ namespace WpfApp1
             {
                 textBlock_write.Text+=" ";
             }
-
+           
             //MessageBox.Show(e.Key.ToString());
             foreach (var item in allButtons)
             {        
                 if (item.Name.ToString() == e.Key.ToString().ToLower())
-                { 
-
+                {
+                    
+                                   
                     if (item.Tag.ToString() == "Violet")
                     {
                         item.Template = this.Resources["ButtonTemplate2NonBordered"] as ControlTemplate;
                         textBlock_write.Text += item.Content.ToString();
-                        
-                        break;
+                                            
                     }
                    else if (item.Tag.ToString() == "DeepPink")
                     {
                         item.Template = this.Resources["ButtonTemplate1NonBordered"] as ControlTemplate;
                         textBlock_write.Text += item.Content.ToString();
-                        textBlock_string.IsEnabled = true;
-                        break;
+                        
                     }
                     else if (item.Tag.ToString() == "LimeGreen")
                     {
                         item.Template = this.Resources["ButtonTemplate3NonBordered"] as ControlTemplate;
                         textBlock_write.Text += item.Content.ToString();
-                        break;
+                        
                     }
                     else if (item.Tag.ToString() == "Yellow")
                     {
                         item.Template = this.Resources["ButtonTemplate4NonBordered"] as ControlTemplate;
                         textBlock_write.Text += item.Content.ToString();
-                        break;
+                      
                     }
                     else if (item.Tag.ToString() == "Gray")
                     {
                         item.Template = this.Resources["ButtonTemplate5NonBordered"] as ControlTemplate;
                         textBlock_write.Text += item.Content.ToString();
-                        break;
+                        
                     }
                     else if (item.Tag.ToString() == "BlueViolet")
                     {
                         item.Template = this.Resources["ButtonTemplate6NonBordered"] as ControlTemplate;
                         textBlock_write.Text += item.Content.ToString();
-                        break;
+                        
                     }
                     else if (item.Tag.ToString() == "Brown")
                     {
                         item.Template = this.Resources["ButtonTemplate7NonBordered"] as ControlTemplate;
-                        break;
+                        
                     }
+                    string buf = textBlock_string.Text;
+                    string buf1 = textBlock_write.Text;
 
+                    if (buf[count] != buf1[count])
+                    {
+                        fails++;
+                        textBlock_fails.Text = fails.ToString();
+                    }
+                    count++;
+
+                    if (count.ToString() == textBlock_string_size.Text)
+                    {
+                        MessageBox.Show("Тест окончен!!!");
+                    }
                 }
-              
+               
+
             }
            
         }
@@ -221,7 +235,7 @@ namespace WpfApp1
 
         private void window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            textBlock_string_size.Text =Convert.ToInt16( ((window.Width) / 9.9)).ToString();
+            textBlock_string_size.Text =Convert.ToInt16( ((window.Width) / 10)).ToString();
 
         }
 
@@ -366,8 +380,8 @@ namespace WpfApp1
         }
 
         private void button_stop_Click(object sender, RoutedEventArgs e)
-        { 
-            
+        {
+            count = 0; fails = 0;
             textBlock_speed.Text = "0";
             textBlock_fails.Text = "0";
             tbl_slider.Text = "0";
@@ -379,38 +393,13 @@ namespace WpfApp1
         }
         private void button_start_Click(object sender, RoutedEventArgs e)
         {
-
             grid_button.IsEnabled = true;
             button_stop.IsEnabled = true;
             button_start.IsEnabled = false;
             Level();
-            button_Focus.Focus();
-            
+            button_Focus.Focus();          
         }
 
-        int count = 0;
-        //private void textBlock_write_SizeChanged(object sender, SizeChangedEventArgs e)
-        //{
-           
-            
-        //    //MessageBox.Show(buf.ToString());
-
-        //        /* MessageBox.Show(textBlock_string.Text[count].ToString()); /*MessageBox.Show(textBlock_write.Text[count].ToString());*/
-        //    //if (textBlock_string.Text[count] != textBlock_write.Text[count]/* || count != Convert.ToInt32(textBlock_string_size.Text*/)
-        //    //{
-        //    //    textBlock_fails.Text = count.ToString();
-        //    //}
-        //    //count++;
-        //}
-
-        private void textBlock_write_TextInput(object sender, TextCompositionEventArgs e)
-        {
-            string buf = textBlock_string.Text;
-            string buf1 = textBlock_write.Text;
-            if (buf[count] == buf1[count])
-            {
-                textBlock_fails.Text = count.ToString();
-            }
-        }
+        
     }
 }

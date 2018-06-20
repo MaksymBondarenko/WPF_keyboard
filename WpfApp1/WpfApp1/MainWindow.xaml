@@ -416,10 +416,8 @@
                ></TextBlock>
             </Grid>
             <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Name="textBlock_write" FontSize="20" HorizontalAlignment="Left" TextInput="textBlock_write_TextInput"/>
+               
+                <TextBlock Name="textBlock_write" FontSize="20" HorizontalAlignment="Left" />
 
             </Grid>
         </StackPanel>

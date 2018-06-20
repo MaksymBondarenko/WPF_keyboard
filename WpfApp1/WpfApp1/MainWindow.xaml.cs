@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfApp1
 {
@@ -20,13 +22,13 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        DateTime DT = new DateTime();
-        
+        DispatcherTimer timer = new DispatcherTimer();
 
-        int count = 0, fails = 0;
+        int count = 0, fails = 0, speed=0;
         bool flag = false;
         Random rnd = new Random();
        public List<Button> allButtons=null;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -55,9 +57,15 @@ namespace WpfApp1
             grid_button.IsEnabled = false;
             button_stop.IsEnabled = false;
             textBlock_string.IsEnabled = false;
-
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Interval = new TimeSpan(0, 0, 1);
+            
         }
-
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            speed++;
+            
+        }
         private void grid_button_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -67,6 +75,7 @@ namespace WpfApp1
                 {
                     item.Content = item.Content.ToString().ToUpper();
                 }
+                
             }
 
             if (e.Key.ToString() == "Capital")
@@ -101,11 +110,12 @@ namespace WpfApp1
            
             //MessageBox.Show(e.Key.ToString());
             foreach (var item in allButtons)
-            {        
+            {
+               
                 if (item.Name.ToString() == e.Key.ToString().ToLower())
                 {
-                    
-                                   
+                  
+
                     if (item.Tag.ToString() == "Violet")
                     {
                         item.Template = this.Resources["ButtonTemplate2NonBordered"] as ControlTemplate;
@@ -147,29 +157,32 @@ namespace WpfApp1
                         item.Template = this.Resources["ButtonTemplate7NonBordered"] as ControlTemplate;
                         
                     }
-                    string buf = textBlock_string.Text;
-                    string buf1 = textBlock_write.Text;
-
-                    if (buf[count] != buf1[count])
-                    {
-                        fails++;
-                        textBlock_fails.Text = fails.ToString();
-                    }
-                    count++;
-
-                    if (count.ToString() == textBlock_string_size.Text)
-                    {
-                        MessageBox.Show("Тест окончен!!!");
-                    }
-                }
-               
-
+                                                                 
+                }              
+            } 
+        }
+        public void Fails()
+        {
+            string buf = textBlock_string.Text;
+            string buf1 = textBlock_write.Text;
+            if (buf[buf1.Length - 1] != buf1[buf1.Length - 1])
+            {
+                fails++;
+                textBlock_fails.Text = fails.ToString();
             }
-           
+
+            if ((count+1).ToString() == textBlock_string_size.Text)
+            {
+                MessageBox.Show("Тест окончен!!!");
+                timer.Stop();
+                textBlock_speed.Text = ((speed * (Convert.ToInt16(textBlock_string_size.Text))).ToString());
+                MessageBox.Show("Ваша скорость набора: " + textBlock_speed.Text);
+            }
+            count++;
         }
         private void grid_button_KeyUp(object sender, KeyEventArgs e)
         {
-           
+            
             if (e.Key.ToString() == "LeftShift" || e.Key.ToString() == "RightShift")
             {
                 foreach (var item in allButtons)
@@ -225,12 +238,13 @@ namespace WpfApp1
                     else { continue; }
                    
                 }
+
                
-
             }
+            Fails();
         }
-       
 
+       
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             tbl_slider.Text = Convert.ToUInt16(slider.Value).ToString();
@@ -238,7 +252,7 @@ namespace WpfApp1
 
         private void window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            textBlock_string_size.Text =Convert.ToInt16( ((window.Width) / 10)).ToString();
+            textBlock_string_size.Text =Convert.ToInt16( ((window.Width) / 12)).ToString();
 
         }
 
@@ -393,6 +407,7 @@ namespace WpfApp1
             checkBox_Upper.IsChecked = false;
             button_start.IsEnabled = true;
             button_stop.IsEnabled = false;
+
         }
         private void button_start_Click(object sender, RoutedEventArgs e)
         {
@@ -400,7 +415,8 @@ namespace WpfApp1
             button_stop.IsEnabled = true;
             button_start.IsEnabled = false;
             Level();
-            button_Focus.Focus();          
+            button_Focus.Focus();
+            timer.Start();
         }
 
         
